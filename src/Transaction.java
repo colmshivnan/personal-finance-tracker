@@ -4,10 +4,10 @@ public class Transaction{
     private String type;
 
     public Transaction(String description, double amount, String type){
-        if(amount <= 0 ){
-            throw new IllegalArgumentException("Amount must be positive");
+        if(amount <= 0 || !Double.isFinite(amount)){
+            throw new IllegalArgumentException("Amount must be a positive finite number");
         }
-        if(!type.equals("income") && !type.equals("expense")){
+        if(!"income".equals(type) && !"expense".equals(type)){
             throw new IllegalArgumentException("Type must be either income or expense");
         }
         this.description = description;
